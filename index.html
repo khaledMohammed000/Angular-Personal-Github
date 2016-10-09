@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" ng-app="githubViewer">
+<head >
 	<meta charset="UTF-8">
 	<title>Github Api project</title>
+    <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/mainController.js"></script>
 </head>
-<body>
+<body ng-controller="MainController">
+<input type="text" placeholder="User Name" val>
+<h1>{{error}}</h1>
+<div>User Name : {{userData.name}}</div>
+<div>Location : {{userData.location}}</div>
+<div><img src="{{userData.avatar_url}}" title="{{userData.name}}"></div>
+
 
 </body>
 </html>
