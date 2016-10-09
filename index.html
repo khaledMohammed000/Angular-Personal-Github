@@ -12,16 +12,12 @@
 <h1>{{message}}</h1>
 <br>
 
-<form name="search">
-    <input type="text" placeholder="User Name" ng-model="userName">
-    <input type="submit" value="Search" ng-click="serch()">
+<form name="searchUser" ng-submit="search()">
+    <input type="text" required placeholder="User Name" ng-model="userName">
+    <input type="submit" value="Search" >
 </form>
 <br>
 
-<h1>{{error}}</h1>
-<h1>{{userData.name}} {{userData.location}}</h1>
-
-<div><img ng-src="{{userData.avatar_url}}" title="{{userData.name}}"></div>
-
+<div ng-include="'userDetails.html'" ng-show="userData"></div>
 </body>
 </html>

@@ -9,18 +9,28 @@
 
         $scope.message = "GitHub Viewer";
 
+        $scope.sortOrder="-stargazers_count";
         function onSuccess(response) {
-            $scope.userData = response.data;
+            $scope.userData = response.data;;
+            $http.get($scope.userData.repos_url)
+                .then(function(response){
+                    $scope.repositoryList = response.data;
+                },onFailure);
         };
 
+        // function onRepos(response){
+        //   $scope.repositoryList = response.data;
+        // };
+
         function onFailure(reason) {
-            $scope.error = "could not Fetch the user !";
+            $scope.error = "could not Fetch the Data !";
         }
-        $scope.serch = function search() {
+        $scope.search = function search() {
             $http.get('https://api.github.com/users/'+$scope.userName)
                 .then(onSuccess,onFailure);
         };
 
     };
+
     app.controller("MainController",['$scope','$http',MainController]);
 })();
