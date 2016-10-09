@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="githubViewer">
-<head >
-	<meta charset="UTF-8">
-	<title>Github Api project</title>
-    <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Github Api project</title>
+    <script data-require="angular.js@1.5.8" data-semver="1.5.8"
+            src="https://code.angularjs.org/1.5.8/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/mainController.js"></script>
 </head>
 <body ng-controller="MainController">
-<input type="text" placeholder="User Name" val>
-<h1>{{error}}</h1>
-<div>User Name : {{userData.name}}</div>
-<div>Location : {{userData.location}}</div>
-<div><img src="{{userData.avatar_url}}" title="{{userData.name}}"></div>
+<h1>{{message}}</h1>
+<br>
 
+<form name="search">
+    <input type="text" placeholder="User Name" ng-model="userName">
+    <input type="submit" value="Search" ng-click="serch()">
+</form>
+<br>
+
+<h1>{{error}}</h1>
+<h1>{{userData.name}} {{userData.location}}</h1>
+
+<div><img ng-src="{{userData.avatar_url}}" title="{{userData.name}}"></div>
 
 </body>
 </html>

@@ -6,12 +6,21 @@
     var app = angular.module('main',[]);
 
     var MainController = function ($scope,$http) {
-        $http.get('https://api.github.com/users/'+'khaledmohammed000')
-            .then(function (response) {
+
+        $scope.message = "GitHub Viewer";
+
+        function onSuccess(response) {
             $scope.userData = response.data;
-        },function (reason){
+        };
+
+        function onFailure(reason) {
             $scope.error = "could not Fetch the user !";
-            });
+        }
+        $scope.serch = function search() {
+            $http.get('https://api.github.com/users/'+$scope.userName)
+                .then(onSuccess,onFailure);
+        };
+
     };
     app.controller("MainController",['$scope','$http',MainController]);
 })();
